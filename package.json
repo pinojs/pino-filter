@@ -1,0 +1,43 @@
+{
+  "name": "pino-filter",
+  "version": "1.0.0",
+  "description": "A transport for Pino to filter logs based on logger names",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap --no-cov 'test/**/*.test.js'",
+    "lint": "snazzy"
+  },
+  "precommit": [
+    "lint",
+    "test"
+  ],
+  "bin": {
+    "pino-filter": "./bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pinojs/pino-filter.git"
+  },
+  "keywords": [
+    "pino"
+  ],
+  "author": "James Sumners <james.sumners@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinojs/pino-filter/issues"
+  },
+  "homepage": "https://github.com/pinojs/pino-filter#readme",
+  "devDependencies": {
+    "flush-write-stream": "^1.0.2",
+    "pre-commit": "^1.2.2",
+    "snazzy": "^6.0.0",
+    "standard": "^9.0.2",
+    "tap": "^10.3.0"
+  },
+  "dependencies": {
+    "fast-json-parse": "^1.0.2",
+    "pump": "^1.0.2",
+    "split2": "^2.1.1",
+    "through2": "^2.0.3"
+  }
+}
