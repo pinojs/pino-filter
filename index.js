@@ -3,6 +3,7 @@
 const split = require('split2')
 const pump = require('pump')
 const through = require('through2')
+const assign = require('deep-assign')
 const jsonParser = require('fast-json-parse')
 
 const defaults = {
@@ -65,10 +66,7 @@ const internals = {
     cb()
   },
 
-  stream: process.stdout,
-  filters: Object.keys(config.levels),
-  levels: config.levels,
-  values: config.values
+  stream: process.stdout
 }
 
 Object.defineProperty(internals, 'filters', {
@@ -107,7 +105,7 @@ function loadConfig () {
   let result = defaults
   try {
     const userConfig = require(process.argv[2])
-    result = Object.assign({}, defaults, userConfig)
+    result = assign({}, defaults, userConfig)
   } catch (e) {
     console.error('could not load specified config: %s', e.message)
     process.exit(1)
