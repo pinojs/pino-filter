@@ -4,8 +4,9 @@
   "description": "A transport for Pino to filter logs based on logger names",
   "main": "index.js",
   "scripts": {
+    "lint": "snazzy",
     "test": "tap --no-cov 'test/**/*.test.js'",
-    "lint": "snazzy"
+    "test:ci": "standard | snazzy && tap \"test/**/*.test.js\" --coverage-report=lcovonly"
   },
   "precommit": [
     "lint",
