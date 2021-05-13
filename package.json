@@ -36,7 +36,7 @@
     "tap": "^10.3.0"
   },
   "dependencies": {
-    "deep-assign": "^2.0.0",
+    "deep-assign": "^3.0.0",
     "fast-json-parse": "^1.0.2",
     "pump": "^3.0.0",
     "split2": "^3.2.2",
