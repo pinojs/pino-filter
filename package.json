@@ -32,7 +32,7 @@
     "flush-write-stream": "^2.0.0",
     "pre-commit": "^1.2.2",
     "snazzy": "^9.0.0",
-    "standard": "^9.0.2",
+    "standard": "^17.0.0",
     "tap": "^10.3.0"
   },
   "dependencies": {
