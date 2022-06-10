@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard | snazzy",
-    "test": "tap --no-coverage \"test/**/*.test.js\"",
-    "test:ci": "standard | snazzy && tap \"test/**/*.test.js\" --no-check-coverage --coverage-report=lcovonly"
+    "test": "tap --no-cov 'test/**/*.test.js'",
+    "test:ci": "standard | snazzy && tap \"test/**/*.test.js\" --coverage-report=lcovonly"
   },
   "precommit": [
     "lint",
