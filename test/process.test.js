@@ -7,7 +7,7 @@ const pinoFilterPath = path.join(__dirname, '..', 'index.js')
 
 test('process handles non-json input', (t) => {
   t.plan(1)
-  const obj = {name: 'foo:bar', level: 30, msg: 'foo bar'}
+  const obj = { name: 'foo:bar', level: 30, msg: 'foo bar' }
   const pinoFilter = spawn(process.argv[0], [pinoFilterPath])
 
   pinoFilter.stdout.on('data', (data) => {
@@ -24,7 +24,7 @@ test('process handles non-json input', (t) => {
 
 test('logs all info lines when no config given', (t) => {
   t.plan(1)
-  const obj = {name: 'foo:bar', level: 30, msg: 'foo bar'}
+  const obj = { name: 'foo:bar', level: 30, msg: 'foo bar' }
   const pinoFilter = spawn(process.argv[0], [pinoFilterPath])
 
   pinoFilter.stdout.on('data', (data) => {

@@ -45,7 +45,7 @@ const internals = {
       return cb()
     }
 
-    for (var i = 0; i < this.filters.length; i += 1) {
+    for (let i = 0; i < this.filters.length; i += 1) {
       const filter = this.filters[i]
       if (filter === '*' && chunk.level >= logLevelValue) {
         this.stream.write(JSON.stringify(chunk))
