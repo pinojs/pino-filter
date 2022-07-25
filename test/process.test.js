@@ -11,7 +11,7 @@ test('process handles non-json input', (t) => {
   const pinoFilter = spawn(process.argv[0], [pinoFilterPath])
 
   pinoFilter.stdout.on('data', (data) => {
-    t.is(data.toString(), JSON.stringify(obj))
+    t.equal(data.toString(), JSON.stringify(obj))
   })
 
   pinoFilter.on('close', (code) => {
@@ -28,7 +28,7 @@ test('logs all info lines when no config given', (t) => {
   const pinoFilter = spawn(process.argv[0], [pinoFilterPath])
 
   pinoFilter.stdout.on('data', (data) => {
-    t.is(data.toString(), JSON.stringify(obj))
+    t.equal(data.toString(), JSON.stringify(obj))
   })
 
   pinoFilter.on('close', (code) => {

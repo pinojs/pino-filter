@@ -7,19 +7,19 @@ const internals = require('../').internals
 test('filter returns name if no wildcard present', (t) => {
   t.plan(1)
   const filter = internals.getFilter('foo:bar')
-  t.is(filter, 'foo:bar')
+  t.equal(filter, 'foo:bar')
 })
 
 test('filter returns wildcard if name is only wildcard', (t) => {
   t.plan(1)
   const filter = internals.getFilter('*')
-  t.is(filter, '*')
+  t.equal(filter, '*')
 })
 
 test('filter returns startsWith filter', (t) => {
   t.plan(1)
   const filter = internals.getFilter('foo:bar:*')
-  t.is(filter, '~foo:bar:')
+  t.equal(filter, '~foo:bar:')
 })
 
 test('transport writes all logs for * filter', (t) => {
@@ -27,7 +27,7 @@ test('transport writes all logs for * filter', (t) => {
   const ints = Object.create(internals)
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
   const stream = writeStream((data, enc, cb) => {
-    t.is(data.toString(), JSON.stringify(obj))
+    t.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
 
@@ -44,7 +44,7 @@ test('transport writes logs for `foo:*` filter only', (t) => {
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
 
   ints.stream = writeStream((data, enc, cb) => {
-    t.is(data.toString(), JSON.stringify(obj))
+    t.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
   ints.filters = 'foo:*'
@@ -65,7 +65,7 @@ test('transport writes all logs for `foo:bar` filter at `info` level', (t) => {
   const ints = Object.create(internals)
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
   const stream = writeStream((data, enc, cb) => {
-    t.is(data.toString(), JSON.stringify(obj))
+    t.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
 
@@ -89,7 +89,7 @@ test('transport writes logs for `foo:bar` filter only', (t) => {
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
 
   ints.stream = writeStream((data, enc, cb) => {
-    t.is(data.toString(), JSON.stringify(obj))
+    t.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
   ints.filters = 'foo:bar'
