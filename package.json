@@ -4,9 +4,9 @@
   "description": "A transport for Pino to filter logs based on logger names",
   "main": "index.js",
   "scripts": {
-    "lint": "snazzy",
-    "test": "tap --no-cov 'test/**/*.test.js'",
-    "test:ci": "standard | snazzy && tap \"test/**/*.test.js\" --coverage-report=lcovonly"
+    "lint": "standard | snazzy",
+    "test": "tap --no-coverage \"test/**/*.test.js\"",
+    "test:ci": "standard | snazzy && tap \"test/**/*.test.js\" --no-check-coverage --coverage-report=lcovonly"
   },
   "precommit": [
     "lint",
@@ -32,8 +32,8 @@
     "flush-write-stream": "^2.0.0",
     "pre-commit": "^1.2.2",
     "snazzy": "^9.0.0",
-    "standard": "^9.0.2",
-    "tap": "^10.3.0"
+    "standard": "^17.0.0",
+    "tap": "^16.3.0"
   },
   "dependencies": {
     "deep-assign": "^3.0.0",
