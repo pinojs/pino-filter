@@ -2,12 +2,9 @@
 [![npm version](https://img.shields.io/npm/v/pino-filter)](https://www.npmjs.com/package/pino-filter)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/pinojs/pino-filter/ci.yml?branch=master)](https://github.com/pinojs/pino-filter/actions)
 [![Coverage Status](https://coveralls.io/repos/github/pinojs/pino-filter/badge.svg?branch=master)](https://coveralls.io/github/pinojs/pino-filter?branch=master)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
-
-**Lead maintainer:** [James Sumners](https://github.com/jsumners)
 
 *pino-filter* is a transport for [Pino](https://github.com/pinojs/pino) that
-allows filtering of log lines based on logger names, similar to the funtionality
+allows filtering of log lines based on logger names, similar to the functionality
 of filters in the [debug](https://npmjs.com/debug) module.
 
 Logs that match any filters are written to `stdout`. By default, *pino-filter*
