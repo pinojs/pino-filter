@@ -4,14 +4,10 @@
   "description": "A transport for Pino to filter logs based on logger names",
   "main": "index.js",
   "scripts": {
-    "lint": "standard | snazzy",
-    "test": "tap",
-    "test:ci": "standard | snazzy && tap --coverage-report=lcovonly"
+    "lint": "eslint",
+    "test": "c8 node --test",
+    "test:ci": "eslint && c8 node --test"
   },
-  "precommit": [
-    "lint",
-    "test"
-  ],
   "bin": {
     "pino-filter": "./bin.js"
   },
@@ -29,11 +25,10 @@
   },
   "homepage": "https://github.com/pinojs/pino-filter#readme",
   "devDependencies": {
+    "c8": "^10.1.3",
+    "eslint": "^9.39.0",
     "flush-write-stream": "^2.0.0",
-    "pre-commit": "^1.2.2",
-    "snazzy": "^9.0.0",
-    "standard": "^17.0.0",
-    "tap": "^16.3.4"
+    "neostandard": "^0.12.2"
   },
   "dependencies": {
     "deep-assign": "^3.0.0",

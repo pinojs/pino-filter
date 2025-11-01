@@ -1,25 +1,23 @@
 'use strict'
 
-const test = require('tap').test
+const test = require('node:test')
+const assert = require('node:assert')
 const writeStream = require('flush-write-stream')
 const internals = require('../').internals
 
-test('filter returns name if no wildcard present', (t) => {
-  t.plan(1)
+test('filter returns name if no wildcard present', () => {
   const filter = internals.getFilter('foo:bar')
-  t.equal(filter, 'foo:bar')
+  assert.equal(filter, 'foo:bar')
 })
 
-test('filter returns wildcard if name is only wildcard', (t) => {
-  t.plan(1)
+test('filter returns wildcard if name is only wildcard', () => {
   const filter = internals.getFilter('*')
-  t.equal(filter, '*')
+  assert.equal(filter, '*')
 })
 
-test('filter returns startsWith filter', (t) => {
-  t.plan(1)
+test('filter returns startsWith filter', () => {
   const filter = internals.getFilter('foo:bar:*')
-  t.equal(filter, '~foo:bar:')
+  assert.equal(filter, '~foo:bar:')
 })
 
 test('transport writes all logs for * filter', (t) => {
@@ -27,7 +25,7 @@ test('transport writes all logs for * filter', (t) => {
   const ints = Object.create(internals)
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
   const stream = writeStream((data, enc, cb) => {
-    t.equal(data.toString(), JSON.stringify(obj))
+    t.assert.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
 
@@ -44,7 +42,7 @@ test('transport writes logs for `foo:*` filter only', (t) => {
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
 
   ints.stream = writeStream((data, enc, cb) => {
-    t.equal(data.toString(), JSON.stringify(obj))
+    t.assert.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
   ints.filters = 'foo:*'
@@ -54,7 +52,7 @@ test('transport writes logs for `foo:*` filter only', (t) => {
 
   const obj2 = { name: 'bar:foo', msg: 'bar foo', level: 30 }
   ints.stream = writeStream((data, enc, cb) => {
-    t.fail('log should not be written')
+    t.assert.fail('log should not be written')
     cb()
   })
   ints.transport(obj2, 'ascii', () => {})
@@ -65,7 +63,7 @@ test('transport writes all logs for `foo:bar` filter at `info` level', (t) => {
   const ints = Object.create(internals)
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
   const stream = writeStream((data, enc, cb) => {
-    t.equal(data.toString(), JSON.stringify(obj))
+    t.assert.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
 
@@ -77,7 +75,7 @@ test('transport writes all logs for `foo:bar` filter at `info` level', (t) => {
 
   const obj2 = { name: 'foo:bar', msg: 'bar foo', level: 10 }
   ints.stream = writeStream((data, enc, cb) => {
-    t.fail('log should not be written')
+    t.assert.fail('log should not be written')
     cb()
   })
   ints.transport(obj2, 'ascii', () => {})
@@ -89,7 +87,7 @@ test('transport writes logs for `foo:bar` filter only', (t) => {
   const obj = { name: 'foo:bar', msg: 'foo bar', level: 30 }
 
   ints.stream = writeStream((data, enc, cb) => {
-    t.equal(data.toString(), JSON.stringify(obj))
+    t.assert.equal(data.toString(), JSON.stringify(obj))
     cb()
   })
   ints.filters = 'foo:bar'
@@ -99,7 +97,7 @@ test('transport writes logs for `foo:bar` filter only', (t) => {
 
   const obj2 = { name: 'foo:bar:baz', msg: 'foo bar baz', level: 30 }
   ints.stream = writeStream((data, enc, cb) => {
-    t.fail('log should not be written')
+    t.assert.fail('log should not be written')
     cb()
   })
   ints.transport(obj2, 'ascii', () => {})
