@@ -28,7 +28,7 @@
     "c8": "^10.1.3",
     "eslint": "^9.39.0",
     "flush-write-stream": "^2.0.0",
-    "neostandard": "^0.12.2"
+    "neostandard": "^0.13.0"
   },
   "dependencies": {
     "deep-assign": "^3.0.0",
