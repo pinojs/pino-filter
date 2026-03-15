@@ -119,8 +119,7 @@ function parser (input) {
   return result.value
 }
 
-// We are being run as a "binary"
-if (require.main === module) {
+function cli () {
   if (process.argv.length === 3) {
     config = loadConfig()
   }
@@ -139,4 +138,10 @@ if (require.main === module) {
   pump(process.stdin, split(parser), myTransport)
 }
 
+// We are being run as a "binary"
+if (require.main === module) {
+  cli()
+}
+
 module.exports.internals = internals
+module.exports.cli = cli
