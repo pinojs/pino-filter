@@ -9,7 +9,7 @@
     "test:ci": "eslint && c8 node --test"
   },
   "bin": {
-    "pino-filter": "./bin.js"
+    "pino-filter": "./index.js"
   },
   "repository": {
     "type": "git",
